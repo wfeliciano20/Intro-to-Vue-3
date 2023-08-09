@@ -1,36 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <title>Vue Mastery</title>
     <!-- Import Styles -->
     <link rel="stylesheet" href="./assets/styles.css" />
     <!-- Import Vue.js -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  </head>
-  <body>
+</head>
+
+<body>
     <div id="app">
-      <div class="nav-bar"></div>
-      <div class="product-display">
-        <div class="product-container">
-          <div class="product-image">
-            <img :src="image" alt="Green Socks">
-          </div>
-          <div class="product-info">
-              <h1>{{ product }}</h1>
-              <p>{{ description }}</p>
-              <a :href="url">Google</a>
-          </div>
+        <div class="nav-bar"></div>
+        <div class="product-display">
+            <div class="product-container">
+                <div class="product-image">
+                    <img :src="image" alt="Green Socks">
+                </div>
+                <div class="product-info">
+                    <h1>{{ product }}</h1>
+                    <p v-if="inStock" style="color: green">In Stock</p>
+                    <p v-else style="color: red">Out Stock</p>
+                    <p v-show="stockNumber > 0">Stock: {{stockNumber}}</p>
+                    <p>{{ description }}</p>
+                    <a :href="url">Google</a>
+                </div>
+            </div>
         </div>
-      </div>
-      
+
     </div>
 
     <!-- Import App -->
     <script src="./main.js"></script>
 
     <script>
-      const appMounted = app.mount("#app");
+        const appMounted = app.mount("#app");
     </script>
-  </body>
+</body>
+
 </html>
