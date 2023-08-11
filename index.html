@@ -25,6 +25,11 @@
                     <p v-show="stockNumber > 0">Stock: {{stockNumber}}</p>
                     <p>{{ description }}</p>
                     <a :href="url">Google</a>
+                    <ul>
+                        <li v-for="detail in details">{{ detail}}</li>
+                    </ul>
+                    <div v-for="variant in variants" :key="variant.id">{{variant.color}}</div>
+                    <div v-for="size in sizes">{{size}}</div>
                 </div>
             </div>
         </div>
