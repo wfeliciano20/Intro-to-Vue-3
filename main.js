@@ -19,6 +19,10 @@ const app = Vue.createApp({
     methods: {
         addToCart() {
             this.cart += 1
+            this.stockNumber -= 1
+            if (this.stockNumber == 0) {
+                this.inStock = false
+            }
         },
         updateImage(variantImage) {
             this.image = variantImage
@@ -26,6 +30,10 @@ const app = Vue.createApp({
         removeFromCart() {
 
             this.cart -= 1
+            this.stockNumber += 1
+            if (this.stockNumber > 0) {
+                this.inStock = true
+            }
         }
     }
 });
