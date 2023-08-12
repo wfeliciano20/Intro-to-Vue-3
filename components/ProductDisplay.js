@@ -31,6 +31,8 @@ app.component('product-display', {
                 <button class="button" :disabled="cart == 0" @click="removeFromCart" :class="{disabledButton: cart == 0}">Remove</button>
             </div>
         </div>
+        <review-list v-if="reviews.length" :reviews="reviews"></review-list>
+        <review-form @review-submitted="addReview"></review-form>
     </div>
     `,
     data() {
@@ -47,6 +49,7 @@ app.component('product-display', {
                 { id: 2235, color: "blue", image: "./assets/images/socks_blue.jpg", quantity: 0 },
             ],
             sizes: ["S", "M", "L", "XL", "XXL", "XXXL"],
+            reviews: []
         }
     },
     methods: {
@@ -63,6 +66,9 @@ app.component('product-display', {
         },
         updateVariant(index) {
             this.selectedVariant = index
+        },
+        addReview(review) {
+            this.reviews.push(review)
         }
     },
     computed: {
